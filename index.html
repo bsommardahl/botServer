@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="helloApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Hello AngularJS - Hello World</title>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
+<script>
+	var helloApp = angular.module("helloApp", []);
+	helloApp.controller("HelloCtrl", function($scope, $http) {
+	
+		$scope.stop = function(){
+			$http.post("/stop");
+		};
+	
+		$scope.forward = function(){
+			$http.post("/forward");
+		};
+	
+		$scope.back = function(){
+			$http.post("/backward");
+		};
+	
+		$scope.right = function(){
+			$http.post("/right");
+		};
+	
+		$scope.left = function(){
+			$http.post("/left");
+		};
+	
+	});
+</script>
+</head>
+<body ng-controller="HelloCtrl">
+	
+	<table>
+		<tr><td> </td><td><button ng-click="forward()">Forward</button></td><td></td></tr>
+		<tr><td><button ng-click="left()">Left</button></td><td><button ng-click="stop()">STOP</button></td><td><button ng-click="right()">Right</button></td></tr>
+		<tr><td> </td><td><button ng-click="back()">Back</button></td><td></td></tr>
+	</table>
+</body>
+</html>	
