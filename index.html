@@ -16,7 +16,27 @@
 	button { height: 100px; width: 100px;}
 </style>
 <script>
-	var helloApp = angular.module("helloApp", []);
+	var helloApp = angular.module("helloApp")
+	.directive('myTouchstart', [function() {
+                return function(scope, element, attr) {
+
+                    element.on('touchstart', function(event) {
+                        scope.$apply(function() { 
+                            scope.$eval(attr.myTouchstart); 
+                        });
+                    });
+                };
+            }]).directive('myTouchend', [function() {
+                return function(scope, element, attr) {
+
+                    element.on('touchend', function(event) {
+                        scope.$apply(function() { 
+                            scope.$eval(attr.myTouchend); 
+                        });
+                    });
+                };
+            }]);
+
 	helloApp.controller("HelloCtrl", function($scope, $http) {
 	
 		$scope.stop = function(){
@@ -45,9 +65,21 @@
 <body ng-controller="HelloCtrl">
 	
 	<table>
-		<tr><td> </td><td><button ng-click="forward()"><i class="fa fa-arrow-up fa-6"></i></button></td><td></td></tr>
-		<tr><td><button class="fa fa-arrow-left" ng-click="left()"></button></td><td><button class="fa fa-stop" ng-click="stop()"></button></td><td><button class="fa fa-arrow-right" ng-click="right()"></button></td></tr>
-		<tr><td> </td><td><button class="fa fa-arrow-down fa-3" ng-click="back()"></button></td><td></td></tr>
+		<tr>
+			<td></td>
+			<td><button my-touchstart="forward()" my-touchend="stop()"><i class="fa fa-arrow-up fa-6"></i></button></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><button class="fa fa-arrow-left" my-touchstart="left()" my-touchend="stop()"></button></td>
+			<td></td>
+			<td><button class="fa fa-arrow-right" my-touchstart="right()" my-touchend="stop()"></button></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button class="fa fa-arrow-down fa-3" my-touchstart="back()" my-touchend="stop()"></button></td>
+			<td></td>
+		</tr>
 	</table>
 </body>
 </html>	

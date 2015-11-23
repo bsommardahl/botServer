@@ -16,11 +16,6 @@ app.post('/right', function(req,res){
   res.json({"status": "ok"});
 });
 
-app.post('/right', function(req,res){
-  io.emit('move right', { for: 'everyone' });
-  res.json({"status": "ok"});
-});
-
 app.post('/left', function(req,res){
   io.emit('move left', { for: 'everyone' });
   res.json({"status": "ok"});
