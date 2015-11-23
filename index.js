@@ -12,9 +12,23 @@ app.post('/stop', function(req,res){
   res.json({"status": "ok"});
 });
 
+//leftWithRotation
+
+app.post('/rightRotate', function(req,res){
+  io.emit('rotate right', { for: 'everyone' });
+  console.log("rotate right");
+  res.json({"status": "ok"});
+});
+
 app.post('/right', function(req,res){
-  io.emit('move right', { for: 'everyone' });
+  io.emit('rotate right', { for: 'everyone' });
   console.log("right");
+  res.json({"status": "ok"});
+});
+
+app.post('/leftRotate', function(req,res){
+  io.emit('rotate left', { for: 'everyone' });
+  console.log("rotate left");
   res.json({"status": "ok"});
 });
 

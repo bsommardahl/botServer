@@ -59,6 +59,18 @@
 			$http.post("/left");
 		};
 	
+		$scope.rotateRight = function(){
+			$http.post("/rightRotate");
+		};
+	
+		$scope.left = function(){
+			$http.post("/left");
+		};
+	
+		$scope.rotateLeft = function(){
+			$http.post("/leftRotate");
+		};
+	
 	});
 </script>
 </head>
@@ -66,9 +78,9 @@
 	
 	<table>
 		<tr>
-			<td></td>
+			<td><button class="fa fa-undo" my-touchstart="rotateLeft()" my-touchend="stop()"></button></td>
 			<td><button my-touchstart="forward()" my-touchend="stop()"><i class="fa fa-arrow-up fa-6"></i></button></td>
-			<td></td>
+			<td><button class="fa fa-repeat" my-touchstart="rotateRight()" my-touchend="stop()"></button></td>			
 		</tr>
 		<tr>
 			<td><button class="fa fa-arrow-left" my-touchstart="left()" my-touchend="stop()"></button></td>
