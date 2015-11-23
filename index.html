@@ -39,6 +39,18 @@
 
 	helloApp.controller("HelloCtrl", function($scope, $http) {
 	
+		$scope.highSpeed = function(){
+			$http.post("/highSpeed");
+		};
+		
+		$scope.lowSpeed = function(){
+			$http.post("/lowSpeed");
+		};
+		
+		$scope.stop = function(){
+			$http.post("/stop");
+		};
+		
 		$scope.stop = function(){
 			$http.post("/stop");
 		};
@@ -88,9 +100,10 @@
 			<td><button class="fa fa-arrow-right" my-touchstart="right()" my-touchend="stop()"></button></td>
 		</tr>
 		<tr>
-			<td></td>
+			<td><button class="fa fa-fast-backward fa-3" my-touchstart="lowSpeed()"></button></td>
 			<td><button class="fa fa-arrow-down fa-3" my-touchstart="back()" my-touchend="stop()"></button></td>
-			<td></td>
+			<td><button class="fa fa-fast-forward fa-3" my-touchstart="highSpeed()"></button></td>
+			
 		</tr>
 	</table>
 </body>

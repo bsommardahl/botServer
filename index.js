@@ -26,6 +26,18 @@ app.post('/right', function(req,res){
   res.json({"status": "ok"});
 });
 
+app.post('/lowSpeed', function(req,res){
+  io.emit('lowSpeed', { for: 'everyone' });
+  console.log("slow");
+  res.json({"status": "ok"});
+});
+
+app.post('/highSpeed', function(req,res){
+  io.emit('highSpeed', { for: 'everyone' });
+  console.log("fast");
+  res.json({"status": "ok"});
+});
+
 app.post('/leftRotate', function(req,res){
   io.emit('rotate left', { for: 'everyone' });
   console.log("rotate left");
