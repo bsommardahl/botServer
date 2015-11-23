@@ -16,7 +16,7 @@
 	button { height: 100px; width: 100px;}
 </style>
 <script>
-	var helloApp = angular.module("helloApp")
+	var helloApp = angular.module("helloApp", [])
 	.directive('myTouchstart', [function() {
                 return function(scope, element, attr) {
 
