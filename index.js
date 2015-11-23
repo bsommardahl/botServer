@@ -8,26 +8,31 @@ app.get('/', function(req, res){
 
 app.post('/stop', function(req,res){
   io.emit('stop', { for: 'everyone' });
+  console.log("stop");
   res.json({"status": "ok"});
 });
 
 app.post('/right', function(req,res){
   io.emit('move right', { for: 'everyone' });
+  console.log("right");
   res.json({"status": "ok"});
 });
 
 app.post('/left', function(req,res){
   io.emit('move left', { for: 'everyone' });
+  console.log("left");
   res.json({"status": "ok"});
 });
 
 app.post('/forward', function(req,res){
   io.emit('move forward', { for: 'everyone' });
+  console.log("forward");
   res.json({"status": "ok"});
 });
 
 app.post('/backward', function(req,res){
   io.emit('move backward', { for: 'everyone' });
+  console.log("backward");
   res.json({"status": "ok"});
 });
 
